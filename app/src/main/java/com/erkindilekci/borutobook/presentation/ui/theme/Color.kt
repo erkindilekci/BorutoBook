@@ -29,6 +29,10 @@ val DarkGray = Color(0xFF2a2a2a)
 
 val StarColor = Color(0xFFffc94d)
 
+val ShimmerLightGray = Color(0xFFf1f1f1)
+val ShimmerMediumGray = Color(0xFFe3e3e3)
+val ShimmerDarkGray = Color(0xFF1d1d1d)
+
 val MaterialTheme.backGroundColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Color.Black else Color.White
@@ -52,3 +56,11 @@ val MaterialTheme.inactiveIndicatorColor: Color
 val MaterialTheme.topAppBarBackgroundColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Color.Black else TopAppBarColor
+
+val MaterialTheme.shimmerBackgroundColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Color.Black else ShimmerLightGray
+
+val MaterialTheme.shimmerItemColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) ShimmerDarkGray else ShimmerMediumGray
