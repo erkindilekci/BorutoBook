@@ -7,7 +7,6 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.erkindilekci.borutobook.data.data_source.local.HeroDatabase
 import com.erkindilekci.borutobook.data.data_source.remote.BorutoBookApi
-import com.erkindilekci.borutobook.data.data_source.remote.dto.HeroDto
 import com.erkindilekci.borutobook.domain.model.Hero
 import com.erkindilekci.borutobook.domain.model.HeroRemoteKeys
 import javax.inject.Inject
@@ -20,6 +19,19 @@ class HeroRemoteMediator @Inject constructor(
 
     private val heroDao = db.heroDao()
     private val remoteKeysDao = db.heroRemoteKeysDao()
+
+    override suspend fun initialize(): InitializeAction {
+        val currentTime = System.currentTimeMillis()
+        val lastUpdated = remoteKeysDao.getRemoteKeys(id = 1)?.lastUpdated ?: 0L
+        val cacheTimeOut = 720
+
+        val diffInMinutes = (currentTime - lastUpdated) / 1000 / 60
+        return if (diffInMinutes.toInt() <= cacheTimeOut) {
+            InitializeAction.SKIP_INITIAL_REFRESH
+        } else {
+            InitializeAction.LAUNCH_INITIAL_REFRESH
+        }
+    }
 
     override suspend fun load(
         loadType: LoadType,
@@ -63,7 +75,8 @@ class HeroRemoteMediator @Inject constructor(
                         HeroRemoteKeys(
                             id = hero.id,
                             prevPage = prevPage,
-                            nextPage = nextPage
+                            nextPage = nextPage,
+                            lastUpdated = response.lastUpdated
                         )
                     }
                     remoteKeysDao.addAllRemoteKeys(heroRemoteKeys = keys)

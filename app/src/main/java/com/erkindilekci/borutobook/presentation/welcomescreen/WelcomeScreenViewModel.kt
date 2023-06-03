@@ -18,4 +18,4 @@ class WelcomeScreenViewModel @Inject constructor(
             useCases.saveOnBoardingUseCase(completed)
         }
     }
-}    
+}

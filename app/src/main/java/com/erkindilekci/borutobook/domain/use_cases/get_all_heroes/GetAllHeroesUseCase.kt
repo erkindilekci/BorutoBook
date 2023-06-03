@@ -9,6 +9,6 @@ class GetAllHeroesUseCase(
     private val repository: Repository
 ) {
     operator fun invoke(): Flow<PagingData<Hero>> {
-        return  repository.getAllHeroes()
+        return repository.getAllHeroes()
     }
 }

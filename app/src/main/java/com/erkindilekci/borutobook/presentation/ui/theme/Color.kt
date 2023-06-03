@@ -64,3 +64,7 @@ val MaterialTheme.shimmerBackgroundColor: Color
 val MaterialTheme.shimmerItemColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) ShimmerDarkGray else ShimmerMediumGray
+
+val MaterialTheme.iconColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) LightGray else DarkGray

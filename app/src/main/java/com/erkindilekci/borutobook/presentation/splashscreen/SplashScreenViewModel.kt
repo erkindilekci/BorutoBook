@@ -2,7 +2,6 @@ package com.erkindilekci.borutobook.presentation.splashscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.erkindilekci.borutobook.domain.use_cases.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -26,4 +25,4 @@ class SplashScreenViewModel @Inject constructor(
             _onBoardingCompleted.value = useCases.readOnBoardingUseCase().stateIn(this).value
         }
     }
-}    
+}

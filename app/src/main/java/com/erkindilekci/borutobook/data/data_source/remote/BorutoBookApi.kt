@@ -9,7 +9,7 @@ interface BorutoBookApi {
     @GET("/boruto/heroes")
     suspend fun getAllHeroes(
         @Query("page") page: Int = 1
-    ) : ApiResponse
+    ): ApiResponse
 
     @GET("/boruto/heroes/search")
     suspend fun searchHeroes(

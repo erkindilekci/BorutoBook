@@ -2,7 +2,6 @@ package com.erkindilekci.borutobook.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.erkindilekci.borutobook.data.data_source.local.HeroDatabase
 import com.erkindilekci.borutobook.util.Constants.HERO_DATABASE_NAME
 import dagger.Module
@@ -20,7 +19,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context
-    ) : HeroDatabase = Room.databaseBuilder(
+    ): HeroDatabase = Room.databaseBuilder(
         context,
         HeroDatabase::class.java,
         HERO_DATABASE_NAME

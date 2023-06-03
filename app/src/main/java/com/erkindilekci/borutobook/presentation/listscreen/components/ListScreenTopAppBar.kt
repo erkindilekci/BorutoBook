@@ -39,26 +39,6 @@ import com.erkindilekci.borutobook.presentation.ui.theme.topAppBarBackgroundColo
 fun ListScreenTopAppBar(
     onSearchClicked: () -> Unit
 ) {
-//    when (searchAppBarState) {
-//        SearchAppBarState.CLOSED -> {
-//            DefaultListAppBar(
-//                onSearchClicked = { sharedViewModel.updateSearchAppState(SearchAppBarState.OPENED) },
-//            )
-//        }
-//
-//        else -> {
-//            SearchAppBar(
-//                text = searchTextState,
-//                onTextChange = { sharedViewModel.updateSearchText(it) },
-//                onCloseClicked = {
-//                    sharedViewModel.updateSearchAppState(SearchAppBarState.CLOSED)
-//                    sharedViewModel.updateSearchText("")
-//                },
-//                onSearchClicked = { sharedViewModel.searchDatabase(it) }
-//            )
-//        }
-//    }
-
     TopAppBar(
         title = {
             Text(
