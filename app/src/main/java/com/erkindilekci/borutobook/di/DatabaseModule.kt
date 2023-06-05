@@ -3,6 +3,8 @@ package com.erkindilekci.borutobook.di
 import android.content.Context
 import androidx.room.Room
 import com.erkindilekci.borutobook.data.data_source.local.HeroDatabase
+import com.erkindilekci.borutobook.data.repository.LocalDataSourceImpl
+import com.erkindilekci.borutobook.domain.repository.LocalDataSource
 import com.erkindilekci.borutobook.util.Constants.HERO_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -24,4 +26,10 @@ object DatabaseModule {
         HeroDatabase::class.java,
         HERO_DATABASE_NAME
     ).build()
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(
+        db: HeroDatabase
+    ): LocalDataSource = LocalDataSourceImpl(db)
 }

@@ -42,8 +42,8 @@ fun handlePagingResult(
     heroes.apply {
         val error = when {
             loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-            loadState.prepend is LoadState.Error -> loadState.refresh as LoadState.Error
-            loadState.append is LoadState.Error -> loadState.refresh as LoadState.Error
+            loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+            loadState.append is LoadState.Error -> loadState.append as LoadState.Error
             else -> null
         }
 
@@ -54,7 +54,12 @@ fun handlePagingResult(
             }
 
             error != null -> {
-                EmptyScreen(error = error)
+                EmptyScreen(error = error, heroes = heroes)
+                false
+            }
+
+            heroes.itemCount < 1 -> {
+                EmptyScreen()
                 false
             }
 

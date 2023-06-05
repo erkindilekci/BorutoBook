@@ -49,7 +49,7 @@ fun HeroItem(
     Box(
         modifier = Modifier
             .height(400.dp)
-            .clickable { navController.navigate(Screen.DetailScreen.passHeroId(heroId = hero.id)) },
+            .clickable { navController.navigate(Screen.DetailsScreen.passHeroId(heroId = hero.id)) },
         contentAlignment = Alignment.BottomStart
     ) {
         Surface(shape = RoundedCornerShape(20.dp)) {

@@ -2,12 +2,14 @@ package com.erkindilekci.borutobook.di
 
 import android.content.Context
 import com.erkindilekci.borutobook.data.repository.DataStoreRepositoryImpl
-import com.erkindilekci.borutobook.data.repository.Repository
+import com.erkindilekci.borutobook.data.repository.BorutoBookRepository
 import com.erkindilekci.borutobook.domain.repository.DataStoreRepository
 import com.erkindilekci.borutobook.domain.use_cases.UseCases
 import com.erkindilekci.borutobook.domain.use_cases.get_all_heroes.GetAllHeroesUseCase
+import com.erkindilekci.borutobook.domain.use_cases.get_selected_hero.GetSelectedHeroUseCase
 import com.erkindilekci.borutobook.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
 import com.erkindilekci.borutobook.domain.use_cases.save_onboarding.SaveOnBoardingUseCase
+import com.erkindilekci.borutobook.domain.use_cases.search_heroes.SearchHeroesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,11 +29,13 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideUseCases(repository: Repository): UseCases {
+    fun provideUseCases(repository: BorutoBookRepository): UseCases {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
-            getAllHeroesUseCase = GetAllHeroesUseCase(repository)
+            getAllHeroesUseCase = GetAllHeroesUseCase(repository),
+            searchHeroesUseCase = SearchHeroesUseCase(repository),
+            getSelectedHeroUseCase = GetSelectedHeroUseCase(repository)
         )
     }
 }

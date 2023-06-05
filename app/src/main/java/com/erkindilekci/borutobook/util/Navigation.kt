@@ -6,9 +6,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.erkindilekci.borutobook.presentation.listscreen.ListScreen
-import com.erkindilekci.borutobook.presentation.splashscreen.SplashScreen
-import com.erkindilekci.borutobook.presentation.welcomescreen.WelcomeScreen
+import com.erkindilekci.borutobook.presentation.screens.detailsscreen.DetailsScreen
+import com.erkindilekci.borutobook.presentation.screens.listscreen.ListScreen
+import com.erkindilekci.borutobook.presentation.screens.searchscreen.SearchScreen
+import com.erkindilekci.borutobook.presentation.screens.splashscreen.SplashScreen
+import com.erkindilekci.borutobook.presentation.screens.welcomescreen.WelcomeScreen
 import com.erkindilekci.borutobook.util.Constants.DETAIL_SCREEN_ARGUMENT_KEY
 
 @Composable
@@ -26,13 +28,13 @@ fun Navigation() {
             ListScreen(navController = navController)
         }
         composable(
-            route = Screen.DetailScreen.route,
+            route = Screen.DetailsScreen.route,
             arguments = listOf(navArgument(DETAIL_SCREEN_ARGUMENT_KEY) { type = NavType.IntType })
         ) {
-
+            DetailsScreen(navController = navController)
         }
         composable(route = Screen.SearchScreen.route) {
-
+            SearchScreen(navController = navController)
         }
     }
 }

@@ -3,8 +3,8 @@ package com.erkindilekci.borutobook.di
 import androidx.paging.ExperimentalPagingApi
 import com.erkindilekci.borutobook.data.data_source.local.HeroDatabase
 import com.erkindilekci.borutobook.data.data_source.remote.BorutoBookApi
-import com.erkindilekci.borutobook.data.repository.RemoteDataSourceRepositoryImpl
-import com.erkindilekci.borutobook.domain.repository.RemoteDataSourceRepository
+import com.erkindilekci.borutobook.data.repository.RemoteDataSourceImpl
+import com.erkindilekci.borutobook.domain.repository.RemoteDataSource
 import com.erkindilekci.borutobook.util.Constants.BASE_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -50,7 +50,7 @@ object NetworkModule {
     fun provideRemoteDataSource(
         borutoBookApi: BorutoBookApi,
         heroDatabase: HeroDatabase
-    ): RemoteDataSourceRepository {
-        return RemoteDataSourceRepositoryImpl(borutoBookApi, heroDatabase)
+    ): RemoteDataSource {
+        return RemoteDataSourceImpl(borutoBookApi, heroDatabase)
     }
 }
