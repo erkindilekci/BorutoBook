@@ -7,6 +7,9 @@
   <img src="https://raw.githubusercontent.com/erkindil/GithubRepositoryEdit/main/boruto.png" alt="Boruto Book UI">
 </div>
 
+#
+<img src="https://raw.githubusercontent.com/erkindil/GithubRepositoryEdit/main/borutogif.gif" align="right" width="250">
+
 ## Technologies
 - Jetpack Compose
 - Ktor
