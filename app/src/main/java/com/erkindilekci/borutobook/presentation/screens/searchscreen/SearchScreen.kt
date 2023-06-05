@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -22,7 +23,11 @@ fun SearchScreen(
     val heroes = viewModel.searchedHeroes.collectAsLazyPagingItems()
 
     val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(MaterialTheme.statusBarColor)
+    val statusBarColor = MaterialTheme.statusBarColor
+
+    SideEffect {
+        systemUiController.setStatusBarColor(statusBarColor)
+    }
 
     Scaffold(
         topBar = {

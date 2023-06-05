@@ -22,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,13 +57,15 @@ fun SearchAppBar(
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp),
+            .height(56.dp)
+            .semantics { contentDescription = "SearchAppBar" },
         elevation = AppBarDefaults.TopAppBarElevation,
         color = MaterialTheme.topAppBarBackgroundColor
     ) {
         TextField(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .semantics { contentDescription = "TextField" },
             value = text,
             onValueChange = { onTextChange(it) },
             placeholder = {
@@ -91,6 +95,7 @@ fun SearchAppBar(
             },
             trailingIcon = {
                 IconButton(
+                    modifier = Modifier.semantics { contentDescription = "CloseIcon" },
                     onClick = {
                         if (text.trim().isNotEmpty()) {
                             onTextChange("")

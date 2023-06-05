@@ -1,8 +1,8 @@
 package com.erkindilekci.borutobook.di
 
 import android.content.Context
-import com.erkindilekci.borutobook.data.repository.DataStoreRepositoryImpl
 import com.erkindilekci.borutobook.data.repository.BorutoBookRepository
+import com.erkindilekci.borutobook.data.repository.DataStoreRepositoryImpl
 import com.erkindilekci.borutobook.domain.repository.DataStoreRepository
 import com.erkindilekci.borutobook.domain.use_cases.UseCases
 import com.erkindilekci.borutobook.domain.use_cases.get_all_heroes.GetAllHeroesUseCase

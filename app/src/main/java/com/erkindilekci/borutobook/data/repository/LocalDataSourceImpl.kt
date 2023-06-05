@@ -6,7 +6,7 @@ import com.erkindilekci.borutobook.domain.repository.LocalDataSource
 
 class LocalDataSourceImpl(
     db: HeroDatabase
-): LocalDataSource {
+) : LocalDataSource {
 
     private val heroDao = db.heroDao()
 

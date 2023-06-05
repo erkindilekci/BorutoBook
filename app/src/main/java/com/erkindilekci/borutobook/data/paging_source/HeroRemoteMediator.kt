@@ -9,10 +9,9 @@ import com.erkindilekci.borutobook.data.data_source.local.HeroDatabase
 import com.erkindilekci.borutobook.data.data_source.remote.BorutoBookApi
 import com.erkindilekci.borutobook.domain.model.Hero
 import com.erkindilekci.borutobook.domain.model.HeroRemoteKeys
-import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class HeroRemoteMediator @Inject constructor(
+class HeroRemoteMediator(
     private val api: BorutoBookApi,
     private val db: HeroDatabase
 ) : RemoteMediator<Int, Hero>() {

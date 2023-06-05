@@ -50,31 +50,20 @@ fun SplashScreen(
         }
     }
 
-    if (isSystemInDarkTheme()) {
-        Box(
-            Modifier
-                .background(Color.Black)
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                modifier = Modifier.rotate(degrees.value),
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = stringResource(R.string.app_logo)
-            )
-        }
+    val modifier = if (isSystemInDarkTheme()) {
+        Modifier.background(Color.Black)
     } else {
-        Box(
-            Modifier
-                .background(Brush.verticalGradient(listOf(GradiantRed, Red)))
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                modifier = Modifier.rotate(degrees.value),
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = stringResource(R.string.app_logo)
-            )
-        }
+        Modifier.background(Brush.verticalGradient(listOf(GradiantRed, Red)))
+    }
+
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            modifier = Modifier.rotate(degrees.value),
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = stringResource(R.string.app_logo)
+        )
     }
 }

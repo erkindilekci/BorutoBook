@@ -34,7 +34,10 @@ fun DetailsScreenContent(
     }
 
     val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(Color(parseColor(darkVibrant)))
+
+    SideEffect {
+        systemUiController.setStatusBarColor(Color(parseColor(darkVibrant)))
+    }
 
     val scaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Expanded)

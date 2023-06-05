@@ -17,5 +17,9 @@ data class HeroDto(
     val abilities: List<String>,
     val natureTypes: List<String>
 ) {
-    fun toHero(): Hero = Hero(id, name, image, about, rating, power, month, day, family, abilities, natureTypes)
+    fun toHero(): Hero =
+        Hero(id, name, image, about, rating, power, month, day, family, abilities, natureTypes)
 }
+
+fun Hero.toHeroDto(): HeroDto =
+    HeroDto(id, name, image, about, rating, power, month, day, family, abilities, natureTypes)

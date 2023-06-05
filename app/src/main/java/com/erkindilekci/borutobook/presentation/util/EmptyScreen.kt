@@ -10,9 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,11 +37,10 @@ import androidx.paging.compose.LazyPagingItems
 import com.erkindilekci.borutobook.R
 import com.erkindilekci.borutobook.domain.model.Hero
 import com.erkindilekci.borutobook.presentation.ui.theme.iconColor
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun EmptyScreen(
     error: LoadState.Error? = null,
@@ -62,16 +65,26 @@ fun EmptyScreen(
     }
 
     var isRefreshing by remember { mutableStateOf(false) }
-
-    SwipeRefresh(
-        swipeEnabled = error != null,
-        state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+    val refreshState = rememberPullRefreshState(
+        refreshing = isRefreshing,
         onRefresh = {
             isRefreshing = true
             heroes?.refresh()
             isRefreshing = false
         }
+    )
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .pullRefresh(state = refreshState, enabled = error != null),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
     ) {
+        PullRefreshIndicator(
+            state = refreshState,
+            refreshing = isRefreshing
+        )
         Column(
             modifier = Modifier
                 .fillMaxSize()
