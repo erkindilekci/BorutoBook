@@ -12,6 +12,8 @@
 
 ## Technologies
 - Jetpack Compose
+- Coroutines
+- Flows
 - Ktor
 - Koin
 - Server Testing
