@@ -3,12 +3,11 @@
 #### Uncover hidden secrets and dive deeper into the lives of beloved Boruto heroes.
 
 ## UI
-<div align="center">
+<p align="center">
   <img src="https://raw.githubusercontent.com/erkindil/GithubRepositoryEdit/main/boruto.png" alt="Boruto Book UI">
-</div>
+</p>
 
-#
-<img src="https://raw.githubusercontent.com/erkindil/GithubRepositoryEdit/main/borutogif.gif" align="right" width="250">
+<img src="https://raw.githubusercontent.com/erkindil/GithubRepositoryEdit/main/borutogif.gif" align="right" width="270">
 
 ## Technologies
 - Jetpack Compose
